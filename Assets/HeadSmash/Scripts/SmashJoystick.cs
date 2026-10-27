@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -30,9 +29,4 @@ namespace HeadSmash
         void OnApplicationFocus(bool focus) { if (!focus) ResetStick(); }
     }
 
-    public sealed class SmashPress : MonoBehaviour, IPointerDownHandler
-    {
-        public Action pressed;
-        public void OnPointerDown(PointerEventData e) => pressed?.Invoke();
-    }
 }

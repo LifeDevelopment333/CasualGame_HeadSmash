@@ -1,0 +1,37 @@
+PASS: UI is a saved native Canvas prefab
+PASS: Assigned UI reference: m_Script
+PASS: Assigned UI reference: safe
+PASS: Assigned UI reference: stick
+PASS: Assigned UI reference: soundLabel
+PASS: Assigned UI reference: dashLabel
+PASS: Assigned UI reference: cooldown
+PASS: Assigned UI reference: score
+PASS: Assigned UI reference: level
+PASS: Assigned UI reference: healthLabel
+PASS: Assigned UI reference: timer
+PASS: Assigned UI reference: ranking
+PASS: Assigned UI reference: rankValue
+PASS: Assigned UI reference: health
+PASS: Assigned UI reference: progress
+PASS: Assigned UI reference: introScreen
+PASS: Assigned UI reference: pauseScreen
+PASS: Assigned UI reference: knockoutScreen
+PASS: Assigned UI reference: resultsScreen
+PASS: Assigned UI reference: knockoutAttacker
+PASS: Assigned UI reference: knockoutSummary
+PASS: Assigned UI reference: resultsTitle
+PASS: Assigned UI reference: resultsSummary
+PASS: Assigned UI reference: toast
+PASS: Assigned UI reference: toastLabel
+PASS: Assigned UI reference: hint
+PASS: Assigned UI reference: floatingLayer
+PASS: Assigned UI reference: floatingTextPrefab
+PASS: Assigned UI reference: radarArea
+PASS: Assigned UI reference: playerDot
+PASS: Assigned UI reference: opponentDotTemplate
+PASS: All nine buttons have Inspector-visible persistent events
+PASS: Every editable label has a saved TMP font
+PASS: UI sprites are persistent project assets
+PASS: No missing scripts in the UI prefab
+PASS: Arena uses the editable UI prefab instance
+PASS: Exactly one active EventSystem

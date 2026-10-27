@@ -37,13 +37,17 @@
 
 ## 수정하기
 
+UI는 씬의 **HeadSmashUI** Canvas와 `Assets/HeadSmash/UI/Prefabs/HeadSmashUI.prefab`에서 직접 수정합니다. Inspector 위쪽의 HUD / Intro / Pause / Knockout / Results 버튼으로 각 화면을 미리볼 수 있습니다. [UI 편집 안내](Assets/HeadSmash/UI/README.md)에 Hierarchy와 수정 위치를 정리했습니다.
+
 씬의 **Head Smash / Game** 오브젝트에 있는 `HeadSmashGame` Inspector에서 상대 수, 라운드 시간, 구슬 수, 이동 속도, 돌진 속도, 쿨다운, 피해량을 조절할 수 있습니다. `arenaRadius`를 바꿀 때는 저장된 바닥과 범퍼 크기도 함께 맞춰주세요.
 
 | 파일 | 역할 |
 |---|---|
 | `Assets/HeadSmash/Scripts/HeadSmashGame.cs` | 라운드 상태, 아레나 시뮬레이션, 충돌·처치·경험치, 카메라, 효과음 |
 | `Assets/HeadSmash/Scripts/SmashActor.cs` | 캐릭터 생성, 성장, 조작, AI, 돌진, 애니메이션 |
-| `Assets/HeadSmash/Scripts/HeadSmashHUD.cs` | HUD, 랭킹, 미니맵, 시작·일시정지·부활·결과 화면 |
+| `Assets/HeadSmash/Scripts/HeadSmashHUD.cs` | 저장된 UI에 게임 값과 화면 상태를 연결하는 컨트롤러 |
+| `Assets/HeadSmash/UI/Prefabs/HeadSmashUI.prefab` | Inspector에서 직접 수정하는 Canvas와 네 화면 |
+| `Assets/HeadSmash/UI/Prefabs/HitText.prefab` | 타격 글자 모양과 서체 |
 | `Assets/HeadSmash/Scripts/SmashJoystick.cs` | 포인터별 조이스틱과 박치기 버튼 입력 |
 | `Assets/HeadSmash/Scripts/SmashFx.cs` | 타격 파편, 돌진 먼지와 충격파 |
 | `Assets/HeadSmash/Editor/HeadSmashBuilder.cs` | 아레나 생성과 Windows 빌드 메뉴 |

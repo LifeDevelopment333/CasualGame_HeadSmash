@@ -71,8 +71,14 @@ namespace HeadSmash
             dashClip = Tone("Whoosh", 210, 90, .16f, .12f);
             hitClip = Tone("Bonk", 160, 60, .16f, .22f);
             breakClip = Tone("Smash", 330, 50, .32f, .22f);
-            if (hud == null) hud = gameObject.AddComponent<HeadSmashHUD>();
-            hud.Build(this);
+            if (hud == null) hud = FindFirstObjectByType<HeadSmashHUD>();
+            if (hud == null)
+            {
+                Debug.LogError("Assign the HeadSmashUI prefab to Game > Hud before playing.", this);
+                enabled = false;
+                return;
+            }
+            hud.Initialize(this);
             BestScore = PlayerPrefs.GetInt("HeadSmash.Best", 0);
             PrepareRound();
             State = MatchState.Ready;
