@@ -1,0 +1,19 @@
+PASS: Round creates player, AI rivals and XP
+PASS: Automatic forward movement
+PASS: XP increases head size, level and health
+PASS: Dash starts and rejects immediate reuse
+PASS: Dash ends while cooldown remains active
+PASS: Dash becomes available after cooldown
+PASS: Swept dash detects a crossed target without final overlap
+PASS: One dash cannot damage the same target twice
+PASS: The final slice of a dash still deals damage
+PASS: Lethal headbutt shatters a rival and drops XP
+PASS: Defeated AI respawns with a shield
+PASS: Nearby XP is collected, scored and heals the player
+PASS: Arena bounds contain the growing head
+PASS: Player defeat opens the knockout flow
+PASS: Continue retains 55% XP and grants a fresh shield
+PASS: Pause freezes movement and the match clock
+PASS: Expired timer opens final ranking and replay
+PASS: New round resets score, timer and knockouts
+PASS: 18 gameplay integration checks
