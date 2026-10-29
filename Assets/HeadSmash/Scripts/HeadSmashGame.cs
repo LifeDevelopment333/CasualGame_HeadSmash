@@ -26,6 +26,7 @@ namespace HeadSmash
         public TMP_FontAsset font;
         public Material[] palette;
         public HeadSmashHUD hud;
+        public SmashActor actorPrefab;
 
         public readonly List<SmashActor> Actors = new List<SmashActor>();
         public readonly List<Food> Foods = new List<Food>();
@@ -61,6 +62,12 @@ namespace HeadSmash
 
         void Start()
         {
+            if (actorPrefab == null)
+            {
+                Debug.LogError("Assign the SmashActor prefab to Game > Actor Prefab before playing.", this);
+                enabled = false;
+                return;
+            }
             Application.runInBackground = true;
             Application.targetFrameRate = 60;
             cam = Camera.main;
@@ -109,10 +116,8 @@ namespace HeadSmash
 
         SmashActor SpawnActor(string actorName, int color, Vector3 position, int score, bool player)
         {
-            var go = new GameObject(actorName);
-            go.transform.SetParent(dynamicRoot);
-            go.transform.position = position;
-            var a = go.AddComponent<SmashActor>();
+            var a = Instantiate(actorPrefab, position, Quaternion.identity, dynamicRoot);
+            a.name = actorName;
             a.Initialize(this, actorName, color, score, player);
             Actors.Add(a);
             return a;
@@ -176,10 +181,7 @@ namespace HeadSmash
                 PeakScore = Mathf.Max(PeakScore, Player.Score);
                 if (Remaining <= 0 && State == MatchState.Playing) FinishRound();
             }
-            else if (State == MatchState.Ready)
-            {
-                foreach (var actor in Actors) actor.Animate(Time.time, dt);
-            }
+            foreach (var actor in Actors) actor.UpdatePresentation();
             if (State != MatchState.Paused) UpdateCamera(dt, false);
             hud.Refresh();
         }
@@ -239,8 +241,8 @@ namespace HeadSmash
             victim.Health = Mathf.Max(0, victim.Health - damage);
             victim.HitGrace = .55f;
             victim.Knockback += attacker.Forward * 10f;
-            victim.Pulse = .3f;
-            attacker.Pulse = .17f;
+            victim.PlayImpact();
+            attacker.PlayImpact(true);
             Burst(victim.transform.position + Vector3.up * 1.5f, palette[victim.ColorIndex].color, 12);
             if (attacker.IsPlayer)
             {

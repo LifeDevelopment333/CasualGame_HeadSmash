@@ -28,6 +28,7 @@ namespace HeadSmash.Editor
             var game = new GameObject("Head Smash / Game").AddComponent<HeadSmashGame>();
             game.font = font;
             game.palette = materials;
+            SmashActorPrefabBuilder.CreateForGame(game);
             var world = new GameObject("Arena / Mint playground").transform;
             Part("Water", PrimitiveType.Cube, world, new Vector3(0, -1.4f, 0), new Vector3(180, .4f, 180), 17);
             Part("Island foundation", PrimitiveType.Cube, world, new Vector3(0, -.7f, 0), new Vector3(63, 1.2f, 63), 18);

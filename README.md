@@ -37,6 +37,10 @@
 
 ## 수정하기
 
+캐릭터 모델은 `Assets/HeadSmash/Prefabs/SmashActor.prefab`을 열어 수정합니다. 몸·얼굴·왕관·피격 균열·이름표·체력바가 저장되어 있고, 플레이어와 AI가 이 프리팹을 공유합니다. `SmashActor`의 Prefab references와 Skins 연결을 유지하면 성장·게임 상태 표시가 동작합니다. 씬의 `HeadSmashGame > Actor Prefab`에 연결되어 있으며 **Head Smash → Characters → Create and connect actor prefab** 메뉴로 다른 아레나 씬에도 연결할 수 있습니다. 이 메뉴는 이미 저장된 프리팹을 다시 생성하지 않습니다.
+
+움직임은 `Assets/HeadSmash/Animations/SmashActor.controller`와 10개의 Animation Clip에서 수정합니다. 대기·걷기·돌진, 피격·박치기 반동·레벨업, 보호막·피격 깜빡임이 세 레이어로 분리되어 있습니다. [애니메이션 편집 안내](Assets/HeadSmash/Animations/README.md)에 파라미터와 키를 수정할 위치를 정리했습니다.
+
 UI는 씬의 **HeadSmashUI** Canvas와 `Assets/HeadSmash/UI/Prefabs/HeadSmashUI.prefab`에서 직접 수정합니다. Inspector 위쪽의 HUD / Intro / Pause / Knockout / Results 버튼으로 각 화면을 미리볼 수 있습니다. [UI 편집 안내](Assets/HeadSmash/UI/README.md)에 Hierarchy와 수정 위치를 정리했습니다.
 
 씬의 **Head Smash / Game** 오브젝트에 있는 `HeadSmashGame` Inspector에서 상대 수, 라운드 시간, 구슬 수, 이동 속도, 돌진 속도, 쿨다운, 피해량을 조절할 수 있습니다. `arenaRadius`를 바꿀 때는 저장된 바닥과 범퍼 크기도 함께 맞춰주세요.
@@ -44,7 +48,9 @@ UI는 씬의 **HeadSmashUI** Canvas와 `Assets/HeadSmash/UI/Prefabs/HeadSmashUI.
 | 파일 | 역할 |
 |---|---|
 | `Assets/HeadSmash/Scripts/HeadSmashGame.cs` | 라운드 상태, 아레나 시뮬레이션, 충돌·처치·경험치, 카메라, 효과음 |
-| `Assets/HeadSmash/Scripts/SmashActor.cs` | 캐릭터 생성, 성장, 조작, AI, 돌진, 애니메이션 |
+| `Assets/HeadSmash/Scripts/SmashActor.cs` | 성장, 조작, AI, 돌진, Animator 파라미터와 상태 표시 |
+| `Assets/HeadSmash/Prefabs/SmashActor.prefab` | 직접 수정하는 캐릭터 모델과 이름표·체력바 |
+| `Assets/HeadSmash/Animations/SmashActor.controller` | 캐릭터의 이동·반응·깜빡임 상태 전환 |
 | `Assets/HeadSmash/Scripts/HeadSmashHUD.cs` | 저장된 UI에 게임 값과 화면 상태를 연결하는 컨트롤러 |
 | `Assets/HeadSmash/UI/Prefabs/HeadSmashUI.prefab` | Inspector에서 직접 수정하는 Canvas와 네 화면 |
 | `Assets/HeadSmash/UI/Prefabs/HitText.prefab` | 타격 글자 모양과 서체 |
@@ -64,5 +70,5 @@ Android APK를 다시 빌드하려면 Build Profiles에서 Android로 전환한 
 - Play 모드에서 **Head Smash → Validate gameplay (Play mode)**를 실행하면 다시 확인할 수 있습니다. 검증 후 새 판의 일시정지 화면으로 돌아갑니다.
 - **온라인 멀티플레이는 아직 없습니다.** 상대와 순위는 로컬 AI를 기준으로 계산합니다.
 - 터치 조작과 Safe Area 대응을 구현했습니다. Android 설치용 APK를 제공하며 실기기에서의 플레이 검증과 iOS 빌드는 진행하지 않았습니다.
-- 캐릭터와 이펙트는 코드로 만든 임시 3D 아트입니다. 효과음도 코드로 생성하며 HUD 문구는 영어입니다.
+- 캐릭터는 기본 도형으로 만든 편집 가능한 프리팹입니다. 이펙트와 효과음은 코드로 생성하며 HUD 문구는 영어입니다.
 - 기존 `SampleScene`과 사용자의 기획 파일은 그대로 보존했습니다. 기본 실행 씬은 새 `HeadSmashArena`로 설정했습니다.
